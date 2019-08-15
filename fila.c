@@ -1,5 +1,10 @@
-#include"lista.h"
-#include"funcionarios.h"
+#include"fila.h"
+
+struct funcionario {
+	char nome[50];
+	char cargo[15];
+	float salario;
+};
 
 struct nodo{
 	void* info;
@@ -12,7 +17,7 @@ struct fila{
 	Nodo* funcionarios;
 };
 
-Lista* criaFila(){
+Fila* criaFila(){
 	Fila* l = (Fila*) malloc(sizeof(Lista));
 	l->diretores = NULL;
 	l->coordenadores = NULL;
@@ -56,26 +61,6 @@ void desalocaFila(Fila* fila){
 	printf("Lista desalocada com sucesso!");
 }
 
-Funcionario* preenche(int tipo){
-	Funcionario* novo = (Funcionario*) malloc(sizeof(Funcionario));
-	char nome[50];
-	float salario;
-	printf("Informe o nome: ");
-	scanf("%s", &nome);
-	printf("Informe o salario: ");
-	scanf("%f", &salario);
-	novo->nome = nome;
-	novo->salario = salario;
-	if (tipo==1){
-		strcpy(novo->cargo, "funcionario");
-	} else if (tipo==2){
-		strcpy(novo->cargo, "coordenador");
-	} else if (tipo==3){
-		strcpy(novo->cargo, "diretor");
-	}
-	return novo;	
-}
-
 void insere(Fila* fila, int tipo){
 	Funcionario* novo = preenche(tipo);
 	Nodo* no = (Nodo*) malloc(sizeof(Nodo));
@@ -114,7 +99,7 @@ void insere(Fila* fila, int tipo){
 	}
 }
 
-Funcionario* desenfileira(Fila* fila){
+Nodo* desenfileira(Fila* fila){
 	if estaVazia(fila){
 		return NULL;
 	} else{
@@ -132,12 +117,6 @@ Funcionario* desenfileira(Fila* fila){
 		free(no);
 		return resuldado;
 	}
-}
-
-void imprimeFuncionario(Funcionario* funcionario){
-	printf("---------------\n";)
-	printf("Nome: %s\n", funcionario->nome);
-	printf("Cargo: %s\n", funcionario->cargo);
 }
 
 void imprimeRamo(Nodo* fila){

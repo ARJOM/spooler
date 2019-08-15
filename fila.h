@@ -2,16 +2,29 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef struct funcionario Funcionario;
 
 typedef struct fila Fila;
 
 typedef struct nodo Nodo;
 
-Lista* criaFila();
+Fila* criaFila();
 
-int estaVazia(Lista* lista);
+Funcionario* preenche(int tipo);
 
-void desalocaLista(Lista* lista);
+void imprimeFuncionario(Funcionario* funcionario);
 
-void insere(Lista* lista);
+int ramoVazio(Nodo* fila)
+
+int estaVazia(Fila* fila);
+
+void desalocaFila(Fila* fila);
+
+void insere(Fila* fila, int tipo);
+
+Nodo* desenfileira(Fila* fila);
+
+void imprimeRamo(Nodo* fila);
+
+void imprimeFila(Fila* fila);
 
